@@ -1,11 +1,14 @@
 [project]
-name = "module_name"
+name = "aoc_savior"
 version = "0.0.0"
-description = ""
+description = "A helper library for writing advent of code solutions in Python."
 authors = [
     {name = "AbooMinister25", email = "aboominister@gmail.com"},
 ]
-dependencies = []
+dependencies = [
+    "requests>=2.28.1",
+    "beautifulsoup4>=4.11.1",
+]
 requires-python = ">=3.7"
 license = {text = "MIT"}
 [project.optional-dependencies]
@@ -43,11 +46,9 @@ precommit = [
 
 [tool.pdm.scripts]
 format = { shell = "black . && isort ." }
-lint = { shell = "pyright && flake8" }
+lint = { shell = "flake8" }
 test = "pytest ."
-coverage = { shell = "coverage run -m pytest && coverage report && coverage xml" }
-precommit = { shell = "pdm run pre-commit run --all-files" }
-all = { composite = ["format", "lint", "test", "coverage"] }
+all = { composite = ["format", "lint", "test"] }
 
 [tool.black]
 line-length = 100
